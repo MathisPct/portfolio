@@ -1,0 +1,155 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from "astro:content";
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+import FormattedDate from "../components/FormattedDate.astro";
+
+const posts = (await getCollection('blog')).sort(
+    (b, a) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+).slice(0, 3);
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
+    <style>
+        main {
+            width: 960px;
+        }
+
+        #profile-picture {
+            float: right;
+            width: 300px;
+            height: auto;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            width: calc(50% - 1rem);
+        }
+
+        ul li * {
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        ul li:first-child .title {
+            font-size: 2.369rem;
+        }
+
+        ul li img {
+            margin-bottom: 0.5rem;
+            border-radius: 12px;
+        }
+
+        ul li a {
+            display: block;
+        }
+
+        .title {
+            margin: 0;
+            color: rgb(var(--black));
+            line-height: 1;
+        }
+
+        .date {
+            margin: 0;
+            color: rgb(var(--gray));
+        }
+
+        ul li a:hover h4,
+        ul li a:hover .date {
+            color: rgb(var(--accent));
+        }
+
+        ul a:hover img {
+            box-shadow: var(--box-shadow);
+        }
+
+        @media (max-width: 720px) {
+            ul {
+                gap: 0.5em;
+            }
+
+            ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            ul li:first-child {
+                margin-bottom: 0;
+            }
+
+            ul li:first-child .title {
+                font-size: 1.563em;
+            }
+
+            p {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #intro-container p img {
+                float: none;
+            }
+        }
+
+        #projects-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #projects-section a {
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+<Header title={SITE_TITLE}/>
+<main>
+    <h1>Bonjour, je m'appelle Mathis</h1>
+    <p>
+        <img id="profile-picture" src="./photoProfil.png" alt="Photo de profil">
+        Alternant à la SNCF en tant qu'Ingénieur conception & développement, cela fait maintenant de nombreuses années
+        que je m'intéresse au monde merveilleux de l'informatique. Tout a débuté lors d'un projet scolaire en 2018, où
+        je devais réaliser une prothèse bionique. Depuis je n'ai jamais quitté ce monde et le développement informatique
+        est devenu une passion pour moi. J'ai alors choisi de continuer mes études dans ce secteur afin de concilier
+        cette passion avec mes études.
+    </p>
+    <h2>Découvrez mes projets</h2>
+    <section id="projects-section">
+        <ul>
+            {
+                posts.map((post) => (
+                        <li>
+                            <a href={`/blog/${post.slug}/`}>
+                                <img width={720} height={360} src={post.data.heroImage} alt=""/>
+                                <h4 class="title">{post.data.title}</h4>
+                                <p class="date">
+                                    <FormattedDate date={post.data.pubDate}/>
+                                </p>
+                            </a>
+                        </li>
+                ))
+            }
+        </ul>
+        <a href="/blog">Voir plus de projets</a>
+    </section>
+</main>
+<Footer/>
+</body>
+</html>
