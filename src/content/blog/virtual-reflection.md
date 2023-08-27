@@ -2,7 +2,7 @@
 title: 'Virtual Reflection'
 description: 'Jeu réalisé en C#'
 pubDate: 'Jun 25 2022'
-heroImage: '/virtual-reflection/virtualReflection.png'
+heroImage: '/portfolio/virtual-reflection/virtualReflection.png'
 ---
 
 ## Principe

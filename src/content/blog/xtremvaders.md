@@ -2,7 +2,7 @@
 title: 'XtremVaders'
 description: 'XTremVaders est un jeu en deux dimensions inspiré du célèbre jeu Space Invaders'
 pubDate: 'Sep 13, 2021'
-heroImage: '/xtremvaders/XtremVaders.gif'
+heroImage: '/portfolio/xtremvaders/XtremVaders.gif'
 ---
 
 ## Qu'est-ce qu'XtremVaders ❓

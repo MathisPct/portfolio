@@ -2,7 +2,7 @@
 title: 'Autolib'
 description: 'Projet fictif de réservation de voitures'
 pubDate: 'Jun 8 2023'
-heroImage: '/autolib/autolib.png'
+heroImage: '/portfolio/autolib/autolib.png'
 ---
 ## Introduction
 
@@ -35,27 +35,27 @@ Sur le site web, on retrouve une barre de navigation à gauche avec les liens de
 
 #### Visualisation des bornes
 
-![img.png](/autolib/autolib.png)
+![img.png](/portfolio/autolib/portfolio/autolib.png)
 
 #### Réservation de véhicules
 
 La réservation de véhicule s'effectue à partir de la date du jour jusqu'à une date de fin que l'utilisateur doit choisir
-![img_1.png](/autolib/img_1.png)
+![img_1.png](/portfolio/autolib/img_1.png)
 Lorsque l'utilisateur clique sur "Réserver", une boite de dialogue s'affiche avec la date de fin à indiquer.
-![img_6.png](/autolib/img_6.png)
+![img_6.png](/portfolio/autolib/img_6.png)
 
 Une fois une véhicule réservé, une notification s'affiche en bas à droite du site en vert afin d'indiquer à
 l'utilisateur
 que le véhicule a bien été reservé.
-![img_7.png](/autolib/img_7.png)
+![img_7.png](/portfolio/autolib/img_7.png)
 
 #### Visualisation de ses réservations
 
-![img_2.png](/autolib/img_2.png)
+![img_2.png](/portfolio/autolib/img_2.png)
 
 #### Visualisation de ses informations personnelles
 
-![img_3.png](/autolib/img_3.png)
+![img_3.png](/portfolio/autolib/img_3.png)
 
 ### Quand l'utilisateur n'est pas connecté
 
@@ -63,11 +63,11 @@ L'utilisateur a la possibilité de s'inscrire et de se désinscrire
 
 #### Inscription
 
-![img_4.png](/autolib/img_4.png)
+![img_4.png](/portfolio/autolib/img_4.png)
 
 #### Connexion
 
-![img_5.png](/autolib/img_5.png)
+![img_5.png](/portfolio/autolib/img_5.png)
 
 
 
