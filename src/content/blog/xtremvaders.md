@@ -2,7 +2,7 @@
 title: 'XtremVaders'
 description: 'XTremVaders est un jeu en deux dimensions inspiré du célèbre jeu Space Invaders'
 pubDate: 'Sep 13, 2021'
-heroImage: '/portfolio/xtremvaders/XtremVaders.gif'
+heroImage: '/xtremvaders/XtremVaders.gif'
 ---
 
 ## Qu'est-ce qu'XtremVaders ❓
@@ -41,6 +41,6 @@ Durant ce projet j'ai réaliser la conception UML du jeu mais aussi de nombreuse
 * Système de bonus
 
 ## 2) Comment jouer au jeu?
-![Guide de XtremVaders: Page 1](/portfolio/xtremvaders/manuelPage1.jpg)
-![Guide de XtremVaders: Page 2](/portfolio/xtremvaders/manuelPage2.jpg)
-![Guide de XtremVaders: Page 3](/portfolio/xtremvaders/manuelPage3.jpg)
+![Guide de XtremVaders: Page 1](/xtremvaders/manuelPage1.jpg)
+![Guide de XtremVaders: Page 2](/xtremvaders/manuelPage2.jpg)
+![Guide de XtremVaders: Page 3](/xtremvaders/manuelPage3.jpg)

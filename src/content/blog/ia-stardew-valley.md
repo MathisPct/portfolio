@@ -2,7 +2,7 @@
 title: 'IA Stardew Valley'
 description: 'Projet conçu dans le cadre du module de graphes dans lequel nous devons implémenter une IA dans un clone du jeu Stardew Valley'
 pubDate: 'Nov 12, 2021'
-heroImage: '/portfolio/stardewvalley/BandeAnnonceIA.gif'
+heroImage: '/stardewvalley/BandeAnnonceIA.gif'
 ---
 
 ## Qu'est-ce que ce projet❓
