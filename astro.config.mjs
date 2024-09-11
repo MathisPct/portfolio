@@ -5,7 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://mathispct.github.io',
-	base: '/portfolio',
+	site: 'https://portfolio.mathispct.fr',
 	integrations: [mdx(), sitemap()],
 });
