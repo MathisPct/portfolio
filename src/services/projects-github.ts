@@ -3,7 +3,7 @@ import { z } from 'astro:content';
 
 const GITHUB_USERNAME = 'MathisPct'
 const headers = new Headers()
-headers.set('Authorization', `Bearer ${import.meta.env.GH_TOKEN}`)
+headers.set('Authorization', `Bearer ${GITHUB_TOKEN}`)
 
 export const LinkSchema = z.object({
     title: z.string(),
