@@ -1,20 +1,22 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
 	return posts.map((post) => ({
-		params: { slug: post.slug },
+		params: { slug: post.id },
 		props: post,
 	}));
 }
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { Content } = await post.render();
+
+const content = marked.parse(post.data.readme);
 ---
 
 <BlogPost {...post.data}>
-	<Content />
+	<article set:html={content} />
 </BlogPost>

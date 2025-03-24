@@ -7,7 +7,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, thumbnail } = Astro.props;
 ---
 
 <html lang="en">
@@ -52,6 +52,15 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				font-style: italic;
 			}
 		</style>
+		<script>
+			const images = document.querySelectorAll("img");
+
+			images.forEach((image) => {
+				image.addEventListener("error", (event) => {
+					image.src = "/blog-placeholder-about.jpg";
+				})
+			});
+		</script>
 	</head>
 
 	<body>
@@ -59,7 +68,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+					<img type="image/png" src={thumbnail} width={1020} height={510} aria-label="Image de couverture"/>
 				</div>
 				<div class="prose">
 					<div class="title">
