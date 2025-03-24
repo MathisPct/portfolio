@@ -1,1 +1,1 @@
-const GITHUB_TOKEN = process.env.GH_TOKEN || process.env.GITHUB_TOKEN!
+export const GITHUB_TOKEN = import.meta.env.GH_TOKEN
