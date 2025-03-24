@@ -9,18 +9,21 @@ export const LinkSchema = z.object({
     title: z.string(),
     href: z.string(),
     icon: z.string(),
-  })
+})
 export type LinkSchema = z.infer<typeof LinkSchema>
 
 export const GitHubProjectSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  title: z.string(),
-  description: z.string().nullable(),
-  url: z.string(),
-  readme: z.string().nullable(),
-  thumbnail: z.string().nullable(),
-  pubDate: z.date()
+    id: z.string(),
+    name: z.string(),
+    title: z.string(),
+    description: z.string().nullable(),
+    url: z.string(),
+    readme: z.string().nullable(),
+    thumbnail: z.string().nullable(),
+    pubDate: z.date(),
+    links: z.array(LinkSchema).nullable(),
+    language: z.string().nullable(),
+    tags: z.array(z.string()).nullable(),
 })
 export type GitHubProjectSchema = z.infer<typeof GitHubProjectSchema>
 
@@ -36,9 +39,9 @@ function replaceImageSrc(domainPrefix: string, path: string): string {
     }
 
     return domainPrefix + (path.startsWith('/') ? path.slice(1) : path);
-    }
+}
 
-    export async function getProjectsList(): Promise<GitHubProjectSchema[]> {
+export async function getProjectsList(): Promise<GitHubProjectSchema[]> {
 
     const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`, { headers });
     const repos = await response.json();
@@ -61,6 +64,9 @@ function replaceImageSrc(domainPrefix: string, path: string): string {
             description: repo.description,
             readme: null,
             pubDate: new Date(repo.created_at),
+            links: [{ href: repo.html_url, icon: 'logo-github', title: 'GitHub' }],
+            language: repo.language,
+            tags: repo.topics.filter((topic: string) => topic !== 'portfolio'),
         });
 
         const readmeResponse = await fetch(

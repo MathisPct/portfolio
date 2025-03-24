@@ -7,7 +7,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, thumbnail } = Astro.props;
+const { title, description, pubDate, updatedDate, thumbnail, links, tags } = Astro.props;
 ---
 
 <html lang="en">
@@ -19,6 +19,15 @@ const { title, description, pubDate, updatedDate, thumbnail } = Astro.props;
 				max-width: 100%;
 				margin: 0;
 			}
+
+			hr {
+				height: 1px;
+				color: rgb(229, 231, 235);
+				background: rgb(229, 231, 235);
+				font-size: 0;
+				border: 0;
+			}
+
 			.hero-image {
 				width: 100%;
 			}
@@ -41,6 +50,31 @@ const { title, description, pubDate, updatedDate, thumbnail } = Astro.props;
 				text-align: center;
 				line-height: 1;
 			}
+
+			.description {
+				text-align: justify;
+			}
+
+			.icon-with-description {
+				display: flex;
+				flex-direction: row;
+				gap: 8px;
+				align-items: center;
+				width: fit-content
+			}
+
+			.tags {
+				display: flex;
+				flex-direction: row;
+				gap: 8px;
+			}
+
+			.tag {
+				background-color: rgb(243 244 246);
+				padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+				border-radius: 4px;
+			}
+
 			.title h1 {
 				margin: 0 0 0.5em 0;
 			}
@@ -72,6 +106,7 @@ const { title, description, pubDate, updatedDate, thumbnail } = Astro.props;
 				</div>
 				<div class="prose">
 					<div class="title">
+						<h1>{title}</h1>
 						<div class="date">
 							<FormattedDate date={pubDate} />
 							{
@@ -82,13 +117,35 @@ const { title, description, pubDate, updatedDate, thumbnail } = Astro.props;
 								)
 							}
 						</div>
-						<h1>{title}</h1>
 						<hr />
+						<div class="description">
+							<p>{description}</p>
+							<div class="tags">
+								{links.map((link) => 
+									<a href={link.href} class="icon-with-description tag">
+										<ion-icon name={link.icon}></ion-icon>
+										{link.title}
+									</a>
+								)}
+								{tags.map((tag) => 
+									<div class="icon-with-description tag">
+										{tag}
+									</div>
+								)}
+							</div>
+						</div>
 					</div>
+					<span class="icon-with-description">
+						<ion-icon name="book"></ion-icon>
+						Readme
+					</span>
+					<hr/>
 					<slot />
 				</div>
 			</article>
 		</main>
 		<Footer />
+		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 	</body>
 </html>
