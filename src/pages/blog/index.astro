@@ -52,6 +52,12 @@ const posts = (await getCollection('blog')).sort(
 			ul li a {
 				display: block;
 			}
+
+			ul li a img {
+				width: 100%;
+                min-height: 232px;
+			}
+
 			.title {
 				margin: 0;
 				color: rgb(var(--black));
