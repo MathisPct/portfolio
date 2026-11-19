@@ -41,11 +41,23 @@ function replaceImageSrc(domainPrefix: string, path: string): string {
     return domainPrefix + (path.startsWith('/') ? path.slice(1) : path);
 }
 
+async function getAllRepos(username, headers) {
+  const repos = [];
+  for (let page = 1; ; page++) {
+    const res = await fetch(
+      `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`,
+      { headers }
+    );
+    if (!res.ok) throw new Error(`GitHub API ${res.status}: ${await res.text()}`);
+    const batch = await res.json();
+    repos.push(...batch);
+    if (batch.length < 100) break;
+  }
+  return repos;
+}
+
 export async function getProjectsList(): Promise<GitHubProjectSchema[]> {
-
-    const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`, { headers });
-    const repos = await response.json();
-
+    const repos = await getAllRepos(GITHUB_USERNAME, headers);    
     const projects: GitHubProjectSchema[] = [];
 
     for (const repo of repos) {
